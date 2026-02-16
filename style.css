@@ -1,0 +1,201 @@
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+    /* PALETA VERDE INSTITUCIONAL PNP */
+    --primary-gradient: linear-gradient(135deg, #034828 0%, #066e3e 100%);
+    --accent-color: #034828; 
+    --secondary-color: #6c757d;
+    --background-color: #f4f6f9;
+    --card-bg: #ffffff;
+    --text-primary: #2d3748;
+    --text-secondary: #718096;
+    
+    /* Sombras y Bordes */
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --radius-md: 15px; /* Bordes un poco más redondeados */
+    --radius-lg: 20px;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+}
+
+/* NAVBAR VERDE */
+.navbar {
+    background: var(--primary-gradient) !important;
+    box-shadow: 0 4px 20px rgba(3, 72, 40, 0.4); /* Sombra más intensa en el navbar */
+    padding: 0.8rem 0;
+    border-bottom: 3px solid #cbbe07; 
+}
+
+.navbar-brand { font-weight: 700; font-size: 1.5rem; letter-spacing: 0.5px; }
+
+.navbar .btn-outline-light {
+    border-radius: 50px;
+    padding: 0.5rem 1.5rem;
+    font-weight: 600;
+    border-width: 2px;
+    transition: all 0.3s ease;
+}
+.navbar .btn-outline-light:hover {
+    background-color: #fff;
+    color: var(--accent-color);
+    transform: scale(1.05); /* Pequeño zoom al botón */
+}
+
+/* --- LOGO ENCABEZADO --- */
+.brand-logo {
+    height: 55px; width: auto; margin-right: 15px;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+.brand-text-container { line-height: 1.2; }
+.brand-title { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 2px; text-shadow: 0 2px 4px rgba(0,0,0,0.2); }
+.brand-subtitle { font-size: 0.85rem; font-weight: 500; opacity: 0.95; white-space: normal; }
+
+@media (min-width: 992px) {
+    .brand-logo { height: 85px; margin-right: 25px; }
+    .brand-text-container { line-height: 1; }
+    .brand-title { font-size: 2.8rem; margin-bottom: 8px; }
+    .brand-subtitle { font-size: 1.35rem; white-space: nowrap; }
+}
+
+/* --- TARJETAS DE LIBROS (SUPER EFECTO) --- */
+/* --- TARJETAS DE LIBROS (DISEÑO PREMIUM) --- */
+.card {
+    border: 1px solid rgba(0,0,0,0.08); /* Borde inicial muy sutil */
+    border-radius: var(--radius-md);
+    background-color: var(--card-bg);
+    box-shadow: var(--shadow-sm);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Efecto rebote suave */
+    overflow: hidden;
+    position: relative;
+}
+
+.card-header {
+    background-color: transparent;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 1.25rem;
+    font-weight: 600;
+}
+
+/* --- EFECTO HOVER (CUANDO PASAS EL MOUSE) --- */
+.book-card:hover {
+    /* 1. El fondo cambia a un verde menta suave degradado */
+    background: linear-gradient(to bottom, #ffffff 0%, #e8f5e9 100%);
+    
+    /* 2. Se levanta y crece */
+    transform: translateY(-12px) scale(1.02);
+    
+    /* 3. Sombra verdosa intensa (Glow) */
+    box-shadow: 0 20px 40px rgba(3, 72, 40, 0.25);
+    
+    /* 4. Aparece un borde verde institucional */
+    border-color: #034828;
+}
+
+/* Efecto en la imagen de portada al pasar el mouse sobre la tarjeta */
+.book-card img {
+    transition: transform 0.5s ease;
+}
+.book-card:hover img {
+    transform: scale(1.08);
+}
+
+.book-card .card-body { padding: 1.5rem; }
+
+/* Título del libro */
+.book-card .card-title {
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+/* El título se pone VERDE al pasar el mouse */
+.book-card:hover .card-title {
+    color: #034828; 
+}
+
+.book-card .card-text { color: var(--text-secondary); }
+/* --- ETIQUETAS Y BOTONES --- */
+.badge { padding: 0.6em 1.2em; border-radius: 50px; font-weight: 600; letter-spacing: 0.5px; }
+.category-badge { 
+    background-color: #f0fff4 !important; /* Fondo verde muy pálido */
+    color: #034828 !important; /* Letra verde oscuro */
+    border: 1px solid #c6f6d5;
+}
+
+/* Botones Generales */
+.btn-primary {
+    background: var(--primary-gradient);
+    border: none;
+    box-shadow: 0 4px 6px rgba(3, 72, 40, 0.3);
+}
+.btn-primary:hover {
+    background: var(--primary-gradient);
+    opacity: 0.95;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(3, 72, 40, 0.4);
+}
+
+/* Botón "Leer" - Efecto especial */
+.btn-outline-primary { 
+    color: var(--accent-color); 
+    border-color: var(--accent-color); 
+    border-width: 2px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+.btn-outline-primary:hover { 
+    background: var(--primary-gradient); 
+    border-color: transparent; 
+    color: #fff; 
+    box-shadow: 0 5px 15px rgba(3, 72, 40, 0.3); /* Resplandor al hacer hover */
+    transform: translateY(-2px);
+}
+
+/* --- LOGIN --- */
+body.login-page {
+    background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+    display: flex; align-items: center; justify-content: center;
+}
+.login-card {
+    max-width: 420px; width: 100%; border-radius: var(--radius-lg);
+    box-shadow: 0 20px 40px -5px rgba(3, 72, 40, 0.15); /* Sombra verde difusa */
+}
+.login-card .card-header {
+    background: var(--primary-gradient); color: white; border-bottom: none; padding: 2rem 1rem; text-align: center;
+}
+.login-card .form-control:focus { border-color: #034828; box-shadow: 0 0 0 3px rgba(3, 72, 40, 0.15); }
+
+/* --- BUSCADOR --- */
+.search-container .input-group-text { background-color: #fff; border-right: none; border-radius: var(--radius-md) 0 0 var(--radius-md); }
+.search-container .form-control { border-left: none; border-radius: 0; }
+.input-group { 
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05); /* Sombra suave en el buscador */
+    border-radius: var(--radius-md); 
+    transition: box-shadow 0.3s;
+}
+/* El buscador brilla un poco al usarlo */
+.input-group:focus-within {
+    box-shadow: 0 5px 20px rgba(3, 72, 40, 0.15);
+}
+
+/* FILTRO CATEGORÍAS */
+#categoryFilter {
+    background-color: #034828 !important;
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    border: 2px solid #034828 !important;
+    border-radius: 0 50px 50px 0 !important;
+    padding-left: 20px;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23ffffff' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e") !important;
+}
+#categoryFilter option { background-color: #ffffff; color: #333333; }
