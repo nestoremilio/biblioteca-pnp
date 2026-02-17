@@ -3,19 +3,22 @@
 
 :root {
     /* PALETA VERDE INSTITUCIONAL PNP */
+    --pnp-green: #006837;
+    --pnp-dark: #004d28;
     --primary-gradient: linear-gradient(135deg, #034828 0%, #066e3e 100%);
     --accent-color: #034828;
-    --secondary-color: #6c757d;
     --background-color: #f4f6f9;
     --card-bg: #ffffff;
     --text-primary: #2d3748;
     --text-secondary: #718096;
 
+    /* Configuración Navbar */
+    --navbar-height: 90px;
+    --navbar-height-mobile: 80px;
+
     /* Sombras y Bordes */
     --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
-    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
     --radius-md: 15px;
-    /* Bordes un poco más redondeados */
     --radius-lg: 20px;
 }
 
@@ -27,264 +30,315 @@ body {
     min-height: 100vh;
 }
 
-/* NAVBAR VERDE */
-.navbar {
+/* --- NAVBAR --- */
+.navbar-custom {
     background: var(--primary-gradient) !important;
     box-shadow: 0 4px 20px rgba(3, 72, 40, 0.4);
-    /* Sombra más intensa en el navbar */
-    padding: 0.8rem 0;
+    padding: 0.5rem 0;
     border-bottom: 3px solid #cbbe07;
+    /* Toque dorado institucional */
 }
 
-.navbar-brand {
-    font-weight: 700;
-    font-size: 1.5rem;
-    letter-spacing: 0.5px;
-}
-
-.navbar .btn-outline-light {
-    border-radius: 50px;
-    padding: 0.5rem 1.5rem;
-    font-weight: 600;
-    border-width: 2px;
-    transition: all 0.3s ease;
-}
-
-.navbar .btn-outline-light:hover {
-    background-color: #fff;
-    color: var(--accent-color);
-    transform: scale(1.05);
-    /* Pequeño zoom al botón */
-}
-
-/* --- LOGO ENCABEZADO --- */
 .brand-logo {
     height: 55px;
     width: auto;
-    margin-right: 15px;
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
 }
 
 .brand-text-container {
-    line-height: 1.2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    line-height: 1;
 }
 
 .brand-title {
-    font-size: 1.5rem;
-    font-weight: 800;
-    letter-spacing: -0.5px;
-    margin-bottom: 2px;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    font-weight: 700;
+    color: white;
+    font-size: 1.2rem;
+    margin-bottom: 0;
 }
 
 .brand-subtitle {
-    font-size: 0.85rem;
-    font-weight: 500;
-    opacity: 0.95;
-    white-space: normal;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.7rem;
+    font-weight: 300;
 }
 
-@media (min-width: 992px) {
-    .brand-logo {
-        height: 85px;
-        margin-right: 25px;
-    }
-
-    .brand-text-container {
-        line-height: 1;
-    }
-
-    .brand-title {
-        font-size: 2.8rem;
-        margin-bottom: 8px;
-    }
-
-    .brand-subtitle {
-        font-size: 1.35rem;
-        white-space: nowrap;
-    }
+.nav-btn-custom {
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: white;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.05);
 }
 
-/* --- TARJETAS DE LIBROS (SUPER EFECTO) --- */
-/* --- TARJETAS DE LIBROS (DISEÑO PREMIUM) --- */
-.card {
+.nav-btn-custom:hover {
+    background: white;
+    color: var(--pnp-green);
+    transform: translateY(-2px);
+    border-color: white;
+}
+
+.btn-logout {
+    background-color: rgba(220, 53, 69, 0.1);
+    border: 1px solid rgba(220, 53, 69, 0.4);
+    color: #ffe6e6;
+    transition: all 0.3s ease;
+}
+
+.btn-logout:hover {
+    background-color: #dc3545;
+    color: white;
+    border-color: #dc3545;
+    transform: translateY(-2px);
+}
+
+/* --- GRID DE LIBROS & TARJETAS --- */
+.book-card {
     border: 1px solid rgba(0, 0, 0, 0.08);
-    /* Borde inicial muy sutil */
     border-radius: var(--radius-md);
     background-color: var(--card-bg);
     box-shadow: var(--shadow-sm);
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    /* Efecto rebote suave */
+    /* Efecto rebote */
     overflow: hidden;
     position: relative;
 }
 
-.card-header {
-    background-color: transparent;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-    padding: 1.25rem;
-    font-weight: 600;
-}
-
-/* --- EFECTO HOVER (CUANDO PASAS EL MOUSE) --- */
+/* Efecto HOVER: Esto hace que la tarjeta salte y brille */
 .book-card:hover {
-    /* 1. El fondo cambia a un verde menta suave degradado */
     background: linear-gradient(to bottom, #ffffff 0%, #e8f5e9 100%);
-
-    /* 2. Se levanta y crece */
     transform: translateY(-12px) scale(1.02);
-
-    /* 3. Sombra verdosa intensa (Glow) */
     box-shadow: 0 20px 40px rgba(3, 72, 40, 0.25);
-
-    /* 4. Aparece un borde verde institucional */
     border-color: #034828;
 }
 
-/* Efecto en la imagen de portada al pasar el mouse sobre la tarjeta */
-.book-card img {
-    transition: transform 0.5s ease;
+.card-img-wrapper {
+    position: relative;
+    height: 280px;
+    background: #f8f9fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-bottom: 1px solid #eee;
 }
 
-.book-card:hover img {
+.book-cover {
+    max-height: 90%;
+    max-width: 85%;
+    object-fit: contain;
+    filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.15));
+    transition: transform 0.4s ease;
+}
+
+.book-card:hover .book-cover {
     transform: scale(1.08);
+    /* La imagen crece un poco */
 }
 
-.book-card .card-body {
-    padding: 1.5rem;
-}
-
-/* Título del libro */
 .book-card .card-title {
     font-weight: 700;
     color: var(--text-primary);
-    margin-bottom: 0.5rem;
     transition: color 0.3s ease;
 }
 
-/* El título se pone VERDE al pasar el mouse */
 .book-card:hover .card-title {
     color: #034828;
 }
 
-.book-card .card-text {
-    color: var(--text-secondary);
-}
-
-/* --- ETIQUETAS Y BOTONES --- */
-.badge {
-    padding: 0.6em 1.2em;
+/* --- BADGES Y BOTONES --- */
+.badge-custom {
+    background-color: #f0fff4;
+    color: #034828;
+    border: 1px solid #c6f6d5;
+    padding: 0.5em 1em;
     border-radius: 50px;
     font-weight: 600;
-    letter-spacing: 0.5px;
 }
 
-.category-badge {
-    background-color: #f0fff4 !important;
-    /* Fondo verde muy pálido */
-    color: #034828 !important;
-    /* Letra verde oscuro */
-    border: 1px solid #c6f6d5;
-}
-
-/* Botones Generales */
-.btn-primary {
-    background: var(--primary-gradient);
-    border: none;
-    box-shadow: 0 4px 6px rgba(3, 72, 40, 0.3);
-}
-
-.btn-primary:hover {
-    background: var(--primary-gradient);
-    opacity: 0.95;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(3, 72, 40, 0.4);
-}
-
-/* Botón "Leer" - Efecto especial */
-.btn-outline-primary {
-    color: var(--accent-color);
-    border-color: var(--accent-color);
-    border-width: 2px;
-    font-weight: 600;
-    transition: all 0.3s ease;
-}
-
-.btn-outline-primary:hover {
-    background: var(--primary-gradient);
-    border-color: transparent;
-    color: #fff;
-    box-shadow: 0 5px 15px rgba(3, 72, 40, 0.3);
-    /* Resplandor al hacer hover */
-    transform: translateY(-2px);
-}
-
-/* --- LOGIN --- */
-body.login-page {
-    background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.login-card {
-    max-width: 420px;
-    width: 100%;
-    border-radius: var(--radius-lg);
-    box-shadow: 0 20px 40px -5px rgba(3, 72, 40, 0.15);
-    /* Sombra verde difusa */
-}
-
-.login-card .card-header {
-    background: var(--primary-gradient);
+.btn-pnp {
+    background-color: var(--pnp-green);
     color: white;
-    border-bottom: none;
-    padding: 2rem 1rem;
-    text-align: center;
+    border: none;
+    transition: all 0.3s;
 }
 
-.login-card .form-control:focus {
-    border-color: #034828;
-    box-shadow: 0 0 0 3px rgba(3, 72, 40, 0.15);
+.btn-pnp:hover {
+    background-color: var(--pnp-dark);
+    box-shadow: 0 5px 15px rgba(3, 72, 40, 0.3);
+    transform: translateY(-2px);
+    color: white;
 }
 
 /* --- BUSCADOR --- */
-.search-container .input-group-text {
-    background-color: #fff;
-    border-right: none;
-    border-radius: var(--radius-md) 0 0 var(--radius-md);
-}
-
-.search-container .form-control {
-    border-left: none;
-    border-radius: 0;
-}
-
-.input-group {
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-    /* Sombra suave en el buscador */
-    border-radius: var(--radius-md);
+.search-hero {
+    background: white;
+    border-radius: 50px;
+    padding: 8px 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+    border: 1px solid rgba(0, 0, 0, 0.05);
     transition: box-shadow 0.3s;
 }
 
-/* El buscador brilla un poco al usarlo */
-.input-group:focus-within {
+.search-hero:focus-within {
     box-shadow: 0 5px 20px rgba(3, 72, 40, 0.15);
+    border-color: var(--pnp-green);
 }
 
-/* FILTRO CATEGORÍAS */
-#categoryFilter {
-    background-color: #034828 !important;
-    color: #ffffff !important;
-    font-weight: 700 !important;
-    border: 2px solid #034828 !important;
-    border-radius: 0 50px 50px 0 !important;
-    padding-left: 20px;
+.search-input {
+    border: none;
+    background: transparent;
+    font-size: 1rem;
+    padding: 10px 15px;
+    width: 100%;
+    outline: none;
+}
+
+.search-select {
+    border: none;
+    background-color: var(--pnp-green);
+    color: white;
+    border-radius: 30px;
+    padding: 10px 20px;
+    font-weight: 600;
     cursor: pointer;
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23ffffff' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e") !important;
+    outline: none;
+    text-align: center;
 }
 
-#categoryFilter option {
-    background-color: #ffffff;
-    color: #333333;
+/* --- RESPONSIVE --- */
+@media (min-width: 992px) {
+    :root {
+        --navbar-height: 110px;
+    }
+
+    .brand-logo {
+        height: 75px;
+        margin-right: 20px;
+    }
+
+    .brand-title {
+        font-size: 1.8rem;
+    }
+
+    .brand-subtitle {
+        font-size: 0.9rem;
+        white-space: nowrap;
+    }
+
+    .nav-buttons-container {
+        flex-direction: row !important;
+        gap: 1rem !important;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .navbar-collapse {
+        background: white;
+        margin-top: 15px;
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .nav-buttons-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .nav-btn-custom,
+    .btn-logout {
+        width: 100%;
+        color: #333;
+        border: 1px solid #ddd;
+    }
+
+    .nav-btn-custom:hover {
+        color: white;
+    }
+
+    .text-mobile-dark {
+        color: #333 !important;
+    }
+
+    .search-hero {
+        flex-direction: column;
+        border-radius: 20px;
+    }
+
+    .search-select {
+        width: 100%;
+        margin-top: 10px;
+        border-radius: 0 0 20px 20px;
+    }
+
+    .vr {
+        display: none;
+    }
+}
+
+/* Animaciones */
+.animate-up {
+    animation: fadeInUp 0.5s ease-out forwards;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* PDF Viewer */
+#pdf-viewer-container {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: #525659;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+}
+
+.pdf-page-canvas {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    margin-bottom: 20px;
+    background: white;
+}
+
+.pdf-controls {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(30, 30, 30, 0.9);
+    padding: 12px 25px;
+    border-radius: 50px;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    z-index: 2000;
+    color: white;
+    backdrop-filter: blur(5px);
+}
+
+.pdf-controls button {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.3rem;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.pdf-controls button:hover {
+    background: rgba(255, 255, 255, 0.2);
 }
