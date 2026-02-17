@@ -153,7 +153,7 @@ if (isset($_GET['ajax'])) {
         rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=2.0">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
     <script>pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';</script>
@@ -184,7 +184,8 @@ if (isset($_GET['ajax'])) {
                             class="bi bi-globe me-2"></i>Repositorio</a>
                     <div class="user-info-mobile lh-sm me-2 ms-lg-2">
                         <div class="fw-bold fs-6 text-white text-mobile-dark">Hola,
-                            <?php echo htmlspecialchars($_SESSION['username']); ?></div>
+                            <?php echo htmlspecialchars($_SESSION['username']); ?>
+                        </div>
                         <small class="opacity-75 text-white text-mobile-dark"
                             style="font-size: 0.8rem;">(<?php echo ucfirst($_SESSION['rol']); ?>)</small>
                     </div>
